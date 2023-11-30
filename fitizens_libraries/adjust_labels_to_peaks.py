@@ -27,11 +27,8 @@ def _find_closest_last_sample(row, last_samples):
         diff = (last_samples[last_samples.notna()].index - row.name).total_seconds()
         diff = pd.Series(diff, index=last_samples[last_samples.notna()].index)
         diff = diff[diff > 0]
-        try:
-            idx = diff.idxmin()
-            return idx
-        except ValueError:
-            return None
+        idx = diff.idxmin()
+        return idx
     else:
         return None
 
