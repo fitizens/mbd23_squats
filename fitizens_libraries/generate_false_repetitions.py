@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 def _calculate_matching(chunk, true_exercises):
     """
     Calculates the matching between two sequnces in the same signal. It's used to calculate the

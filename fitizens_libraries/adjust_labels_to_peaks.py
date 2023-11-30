@@ -1,6 +1,7 @@
 import pandas as pd
 from scipy.signal import find_peaks
 
+
 def _find_closest_last_sample(row, last_samples):
     if row.first_sample_closest_peak:
         diff = (last_samples[last_samples.notna()].index - row.name).total_seconds()
@@ -26,18 +27,21 @@ def _find_closest_last_sample(row, last_samples):
         diff = (last_samples[last_samples.notna()].index - row.name).total_seconds()
         diff = pd.Series(diff, index=last_samples[last_samples.notna()].index)
         diff = diff[diff > 0]
-        idx = diff.idxmin()
-        return idx
+        try:
+            idx = diff.idxmin()
+            return idx
+        except ValueError:
+            return None
     else:
         return None
 
 
 def adjust_labels_to_peaks(
-    workout,
-    is_peak_minima=False,
-    target_signal="linAccZ",
-    exercise_column_name="exercise",
-    no_exercise_label="NO_EXERCISE",
+        workout,
+        is_peak_minima=False,
+        target_signal="linAccZ",
+        exercise_column_name="exercise",
+        no_exercise_label="NO_EXERCISE",
 ):
     signal = workout["data"]
 

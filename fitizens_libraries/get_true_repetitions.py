@@ -1,3 +1,6 @@
+from fitizens_libraries.adjust_labels_to_peaks import _find_closest_last_sample
+
+
 def get_true_repetitions(workout: dict):
     signal = workout["data"]
     last_samples = signal[signal.last_sample_closest_peak].last_sample_closest_peak
