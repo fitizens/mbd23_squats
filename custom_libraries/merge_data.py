@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def merge_data(data: list):
-    time_series = []
+    time_series = list()
     timedelta = pd.Timedelta(milliseconds=0)
     for info in data:
         df = info["series"]
