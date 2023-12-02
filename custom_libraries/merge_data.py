@@ -7,8 +7,7 @@ def merge_data(data: list):
     :param data: training data
     :return: dataframe
     """
-    time_series = []
-    b = 5
+    time_series = list()
     timedelta = pd.Timedelta(milliseconds=0)
     for info in data:
         df = info["series"]
