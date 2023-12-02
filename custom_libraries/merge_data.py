@@ -3,12 +3,12 @@ import pandas as pd
 
 def merge_data(data: list):
     """
-    this function merge all data and creates the dataframe to build ML models.
+    This function merge all data and creates the dataframe to build ML models.
     :param data: training data
     :return: dataframe
     """
     time_series = []
-    a = 10
+    b = 5
     timedelta = pd.Timedelta(milliseconds=0)
     for info in data:
         df = info["series"]
