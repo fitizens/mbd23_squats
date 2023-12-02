@@ -2,6 +2,11 @@ import pandas as pd
 
 
 def merge_data(data: list):
+    """
+    this function merge all data and creates the dataframe to build ML models.
+    :param data: training data
+    :return: dataframe
+    """
     time_series = []
     a = 10
     timedelta = pd.Timedelta(milliseconds=0)
