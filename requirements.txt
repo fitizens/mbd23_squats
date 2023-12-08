@@ -1,5 +1,5 @@
-pandas
 scipy
 plotly
 seaborn
 matplotlib
+pycaret[full]
