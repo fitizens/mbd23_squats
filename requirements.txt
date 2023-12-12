@@ -2,4 +2,4 @@ scipy
 plotly
 seaborn
 matplotlib
-pycaret[full]
+pycaret
