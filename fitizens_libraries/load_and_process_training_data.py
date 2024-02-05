@@ -21,6 +21,7 @@ def load_training_data(
     oos_repetitions=True,
     oos_repetitions_max_chunks=6,
 ) -> list:
+    
     """Load data for trainig a model to detect repetitions of a given exercise. Returns a list of dictionaries with sequences representing repetitions and no repetitions.
 
     Parameters

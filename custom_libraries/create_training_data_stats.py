@@ -10,15 +10,20 @@ def create_training_data_stats(df, exercise):
     series = create_custom_dataframe(df)
 
     for column in series.columns:
-        mean = series[column].mean()
-        std = series[column].std()
-        median = series[column].median()
+        
+        if exercise == 'SQUAT':
+            mean = series[column].mean()
+            std = series[column].std()
+            median = series[column].median()
 
-        stats_dict[f"{column}_mean"] = mean
-        stats_dict[f"{column}_std"] = std
-        stats_dict[f"{column}_median"] = median
+            stats_dict[f"{column}_mean"] = mean
+            stats_dict[f"{column}_std"] = std
+            stats_dict[f"{column}_median"] = median
 
         if exercise == 'PUSHUP' or exercise == 'PULLUP' or exercise == 'SITUP' or exercise == 'SQUAT JUMP':
+            mean = series[column].mean()
+            std = series[column].std()
+            median = series[column].median()
             skewness = series[column].skew()
             kurtosis = series[column].kurtosis()
             min_val = series[column].min()
@@ -28,7 +33,9 @@ def create_training_data_stats(df, exercise):
             quartile_75 = np.percentile(series[column], 75)
             iqr = quartile_75 - quartile_25
 
-
+            stats_dict[f"{column}_mean"] = mean
+            stats_dict[f"{column}_std"] = std
+            stats_dict[f"{column}_median"] = median
             stats_dict[f"{column}_skewness"] = skewness
             stats_dict[f"{column}_kurtosis"] = kurtosis
             stats_dict[f"{column}_min"] = min_val
@@ -39,10 +46,16 @@ def create_training_data_stats(df, exercise):
             stats_dict[f"{column}_iqr"] = iqr
 
         elif exercise == 'BURPEE':
+            mean = series[column].mean()
+            std = series[column].std()
+            median = series[column].median()
             quartile_25 = np.percentile(series[column], 25)
             quartile_75 = np.percentile(series[column], 75)
             iqr = quartile_75 - quartile_25
-
+            
+            stats_dict[f"{column}_mean"] = mean
+            stats_dict[f"{column}_std"] = std
+            stats_dict[f"{column}_median"] = median
             max_val = series[column].max()
             stats_dict[f"{column}_quartile_25"] = quartile_25
             stats_dict[f"{column}_quartile_75"] = quartile_75
@@ -50,11 +63,17 @@ def create_training_data_stats(df, exercise):
             stats_dict[f"{column}_max"] = max_val
         
         elif exercise == 'JUMPING JACK':
+            mean = series[column].mean()
+            std = series[column].std()
+            median = series[column].median()            
             skewness = series[column].skew()
             kurtosis = series[column].kurtosis()
             variance = series[column].var()  # Calculate variance
             rms = np.sqrt(np.mean(series[column]**2))
             
+            stats_dict[f"{column}_mean"] = mean
+            stats_dict[f"{column}_std"] = std
+            stats_dict[f"{column}_median"] = median           
             stats_dict[f"{column}_median"] = median
             stats_dict[f"{column}_skewness"] = skewness
             stats_dict[f"{column}_kurtosis"] = kurtosis
@@ -62,9 +81,15 @@ def create_training_data_stats(df, exercise):
             stats_dict[f"{column}_rms"] = rms
             
         elif exercise == 'DUMBBELL':
+            mean = series[column].mean()
+            std = series[column].std()
+            median = series[column].median()
             skewness = series[column].skew()
             kurtosis = series[column].kurtosis()
             
+            stats_dict[f"{column}_mean"] = mean
+            stats_dict[f"{column}_std"] = std
+            stats_dict[f"{column}_median"] = median           
             stats_dict[f"{column}_skewness"] = skewness
             stats_dict[f"{column}_kurtosis"] = kurtosis
 

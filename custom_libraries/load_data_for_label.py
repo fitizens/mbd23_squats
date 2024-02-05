@@ -120,7 +120,7 @@ def load_data_for_label(
     for i, workout in enumerate(wodata):
         workout = find_peaks_cust(
             workout=workout,
-            #is_peak_minima=is_peak_minima,
+            is_peak_minima=is_peak_minima,
             target_signal=target_signal
         )
         wodata[i] = workout
