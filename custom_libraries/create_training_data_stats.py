@@ -1,11 +1,33 @@
 import numpy as np
 def create_custom_dataframe(series):
+    """
+      Create a custom DataFrame containing specific columns from the input series.
+
+      Parameters:
+      - series: (pd.Series)
+        Input series containing data.
+
+      Returns:
+      - pd.DataFrame: Custom DataFrame containing selected columns.
+      """
     df =  series[["linAccX", "linAccY", "linAccZ", "gyroX", "gyroY", "gyroZ", "magnX", "magnY", "magnZ"]]
     return df
 
-
-
 def create_training_data_stats(df, exercise):
+    """
+        Create statistical features from the input DataFrame based on the specified exercise type.
+
+        Parameters:
+        - df: (pd.DataFrame)
+            DataFrame containing workout information.
+        - exercise: (str)
+            Type of exercise for which statistical features are generated.
+
+        Returns:
+        - dict:
+            Dictionary containing statistical features for each selected column.
+
+        """
     stats_dict = {}
     series = create_custom_dataframe(df)
 

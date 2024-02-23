@@ -6,7 +6,6 @@ import numpy as np
 from custom_libraries.find_peaks import find_peaks_cust
 
 
-
 def load_data_for_label(
     filelist: list,
     signals: list,

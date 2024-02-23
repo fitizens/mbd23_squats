@@ -1,7 +1,5 @@
 from custom_libraries.create_training_data_stats import create_training_data_stats
-from custom_libraries.create_training_data_stats import create_custom_dataframe
 import pandas as pd
-import joblib 
 import warnings
 from pycaret.classification import *
 
@@ -17,7 +15,25 @@ exercise_models = {
     'DUMBBELL': 'DUMBBELL'
 }
 
-def label(df, num_picos:int, exercise:str):
+def label(df: pd.DataFrame,
+          num_picos: int,
+          exercise: str) -> pd.DataFrame:
+    """
+    Label exercise intervals based on peak occurrences in the provided DataFrame.
+
+    Parameters:
+    - df: (pd.DataFrame)
+        DataFrame containing workout information with 'peaks' column.
+    - num_picos: (int)
+        Number of peaks to consider in each exercise interval.
+    - exercise: (str)
+        Type of exercise, should be one of 'SQUAT', 'PUSHUP', 'BURPEE', 'PULLUP', 'SITUP',
+      'SQUAT JUMP', 'JUMPING JACK', or 'DUMBBELL'.
+
+    Returns:
+    - pd.DataFrame: DataFrame with exercise predictions, start, and end points for each interval.
+
+    """
     if 'peaks' not in df.columns or not pd.api.types.is_numeric_dtype(df['peaks']):
         raise ValueError("La columna 'peaks' no está presente o no es de tipo numérico.")
 

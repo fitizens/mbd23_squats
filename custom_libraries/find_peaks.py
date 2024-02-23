@@ -1,18 +1,21 @@
 import pandas as pd
 from scipy.signal import find_peaks
 
-def find_peaks_cust(workout, is_peak_minima, target_signal="linAccZ"):
+def find_peaks_cust(workout,
+                    is_peak_minima,
+                    target_signal="linAccZ"):
     """
-    Encuentra y añade picos a la señal de un entrenamiento.
+       Find and annotate peaks in a workout signal.
 
-    Parameters:
-    - workout (pd.DataFrame): Dataframe que contiene la información del entrenamiento.
-    - is_peak_minima (bool): True si se buscan picos mínimos, False si se buscan picos máximos.
-    - target_signal (str): Nombre de la columna en 'workout' que contiene la señal objetivo.
+       Parameters:
+       - workout:
+            Data containing workout information.
+       - is_peak_minima: (bool)
+            True if searching for minima peaks, False if searching for maxima peaks.
+       - target_signal: (str)
+            Name of the column in 'workout' containing the target signal (default is "linAccZ").
 
-    Returns:
-    - pd.DataFrame: Dataframe con la información de los picos añadida.
-    """
+       """
     signal = workout["data"]
     signal_values = -signal[target_signal] if is_peak_minima else signal[target_signal]
 

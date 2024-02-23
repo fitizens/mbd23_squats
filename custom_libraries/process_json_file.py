@@ -13,6 +13,30 @@ def process_json_files(
         smoothing_duration: int = 200,
         target_frequency: int = None
 ) -> list:
+    """
+    Process JSON files containing workout data and perform signal processing.
+
+    Parameters:
+    - filelist list of str:
+        List of file paths for JSON files containing workout data.
+    - signals : list of str
+        List of signals to include in the dataframe. The signals must be present in the input data
+    - target_exercise : str
+        Exercise to detect repetitions
+    - time_column_name : str, optional
+        Name of the column containing the timestamp
+    - is_peak_minima : bool, optional
+        If True, the peaks are minima instead of maxima. Defaults to False.
+    - smoothing_algorithm (str): The smoothing algorithm to be applied ("ZP-MA" supported).
+    - smoothing_duration : int, optional
+        Duration of the smoothing window in milliseconds. Defaults to None.
+    - target_frequency : int, optional
+        Target frequency to resample the data. Defaults to None.
+
+    Returns:
+    - list: List of dictionaries containing processed workout data.
+
+    """
 
     wodata = []
 
